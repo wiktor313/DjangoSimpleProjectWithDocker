@@ -1,0 +1,16 @@
+{%extends "base.html"%}
+{%block title%}Rooms{%endblock%}
+  {%block content%}
+    <h2>Rooms</h2>
+    {%for room in rooms%}
+        <p>
+            Room name: <strong>{{room.name}}</strong>
+            <br>Room number: {{room.room_number}},
+            <br>on floor: {{room.floor_number}}
+            
+        </p>
+        {% empty %}
+        <li>No meetings available.</li>
+      {% endfor %}
+    <br>Home page is: <a href={%url 'welcome'%}>link </a>
+{%endblock%}

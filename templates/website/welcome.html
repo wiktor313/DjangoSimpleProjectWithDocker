@@ -1,0 +1,22 @@
+{%extends "base.html"%}
+{%load static%}
+{%block title%}Welcome{%endblock%}
+  {%block content%}
+    <h1>All Meetings</h1>
+    <img src="{%static 'website/calendar.gif'%}" alt="Calendar" width="200" height="200" />
+    <ul>
+      {%if user.is_authenticated%}
+        {% for meeting in meetings %}
+          <li>
+            <strong>{{ meeting.title }}</strong> -
+            <a href="{% url 'detail' meeting.id %}">{{ meeting.date }}</a>
+          </li>
+        {% empty %}
+          <li>No meetings available.</li>
+        {% endfor %}
+      <br><h1>Room list: <a href={%url 'rooms'%}> Click me! </a></h1>
+      <h1>New meeting: <a href={%url 'new'%}> Click me! </a></h1>
+      {%endif%}
+    </ul>
+    
+  {%endblock%}
